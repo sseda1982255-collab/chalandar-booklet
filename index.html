@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flipbook</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span id="title">—</span><span class="sub" id="subtitle"></span></div>
+  <div class="status" id="status">Loading…</div>
+</header>
+
+<main id="stage" aria-label="Booklet">
+  <div id="bookwrap"></div>
+  <button class="edge prev" id="edgePrev" aria-label="Previous page"></button>
+  <button class="edge next" id="edgeNext" aria-label="Next page"></button>
+  <div class="hint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v4"/></svg><span class="wheel">SCROLL TO TURN PAGES ·</span><span>DRAG A CORNER · ← →</span></div>
+</main>
+
+<nav class="controls" aria-label="Booklet controls">
+  <button id="btnPrev" title="Previous (←)" aria-label="Previous page"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <div class="pager">
+    <input id="pageInput" type="number" min="1" inputmode="numeric" aria-label="Go to page">
+    <span class="of">/ <span id="pageCount">–</span></span>
+  </div>
+  <button id="btnNext" title="Next (→)" aria-label="Next page"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  <span class="sep"></span>
+  <button id="btnMode" title="Spread / single page" aria-label="Toggle spread"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="8" height="12"/><rect x="13" y="6" width="8" height="12"/></svg></button>
+  <button id="btnZoom" title="Zoom current page (Z)" aria-label="Zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></button>
+  <button id="btnFull" title="Full screen (F)" aria-label="Full screen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+</nav>
+
+<div id="zoom" class="zoom" hidden>
+  <div class="zoombar">
+    <span id="zoomLabel"></span>
+    <button id="zoomOut" aria-label="Zoom out">−</button>
+    <span id="zoomPct">100%</span>
+    <button id="zoomIn" aria-label="Zoom in">+</button>
+    <button id="zoomClose" aria-label="Close zoom">✕</button>
+  </div>
+  <div id="zoomViewport" class="zoomviewport"><canvas id="zoomCanvas"></canvas></div>
+</div>
+
+<script src="vendor/page-flip.browser.js"></script>
+<script type="module" src="viewer.js"></script>
+</body>
+</html>
